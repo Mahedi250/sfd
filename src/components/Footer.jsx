@@ -33,11 +33,35 @@ export default function Footer({ lang }) {
           </div>
         ))}
       </div>
-      <div style={{ maxWidth: 1200, margin: "40px auto 0", paddingTop: 20, borderTop: "1px solid #233047", fontSize: 12, color: "#8E99AD", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }}>
-        <span className="lang-swap">{T(I18N.footer.rights, lang)}</span>
-        <span className="mono">v 2026.04</span>
+      {/* banner card */}
+      <div style={{ maxWidth: 1200, margin: "40px auto 0", paddingTop: 32, borderTop: "1px solid #233047" }}>
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <div className="ftr-banner" style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "1px solid #2A3A52", boxShadow: "0 4px 24px rgba(0,0,0,.35)", maxWidth: 420, width: "100%" }}>
+            <img
+              src="/assets/banner.jpg"
+              alt="শীতলক্ষা জেনারেল হাসপাতাল ব্যানার"
+              style={{ width: "100%", display: "block", borderRadius: 16 }}
+            />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 60%, rgba(5,12,24,.55))", borderRadius: 16, pointerEvents: "none" }}/>
+            <div style={{ position: "absolute", bottom: 12, left: 14, right: 14, display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+              <span style={{ fontSize: 11.5, color: "#E8EDF5", fontWeight: 600, fontFamily: "'Hind Siliguri', sans-serif", lineHeight: 1.4 }}>
+                {T(I18N.contact.addr, lang)}
+              </span>
+              <span style={{ fontSize: 11, color: "#A7FFD0", fontWeight: 700, whiteSpace: "nowrap", marginLeft: 8 }}>
+                ০১৮৩৪-৯৪২১১০
+              </span>
+            </div>
+          </div>
+        </div>
+        <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid #1A2A3A", fontSize: 12, color: "#8E99AD", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }}>
+          <span className="lang-swap">{T(I18N.footer.rights, lang)}</span>
+          <span className="mono">v 2026.04</span>
+        </div>
       </div>
-      <style>{`@media (max-width: 820px) { .ftr-grid { grid-template-columns: 1fr 1fr !important; } }`}</style>
+      <style dangerouslySetInnerHTML={{ __html: `
+        @media (max-width: 820px) { .ftr-grid { grid-template-columns: 1fr 1fr !important; } }
+        @media (max-width: 560px) { .ftr-banner { max-width: 100% !important; } }
+      ` }} />
     </footer>
   );
 }

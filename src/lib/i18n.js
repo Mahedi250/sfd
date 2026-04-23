@@ -1,7 +1,7 @@
 export const I18N = {
   brand: {
-    bn: "শীতলক্ষা ফিজিওথেরাপি অ্যান্ড ডেন্টাল সেন্টার",
-    en: "Shitolokkha Physiotherapy & Dental Center",
+    bn: "শীতলক্ষা জেনারেল হাসপাতাল অ্যান্ড ডায়াগনস্টিক সেন্টার",
+    en: "Shitolokkha General Hospital & Diagnostic Center",
   },
   nav: {
     services: { bn: "সেবাসমূহ", en: "Services" },
@@ -15,8 +15,8 @@ export const I18N = {
     titleTop: { bn: "আপনার সুস্থতার", en: "Your trusted" },
     titleBot: { bn: "নির্ভরযোগ্য ঠিকানা", en: "home for wellness" },
     sub: {
-      bn: "কাপাসিয়ার প্রাণকেন্দ্রে আধুনিক ফিজিওথেরাপি ও ডেন্টাল চিকিৎসা — অভিজ্ঞ চিকিৎসক, আধুনিক যন্ত্রপাতি, রোগীর প্রতি যত্নশীলতা।",
-      en: "Modern physiotherapy and dental treatment in the heart of Kapasia — experienced clinicians, modern equipment, patient-first care.",
+      bn: "কাপাসিয়ায় অর্থোপেডিক, নিউরো রিহ্যাবিলিটেশন ও ডেন্টাল চিকিৎসা — সিআরপি-মানের ফিজিওথেরাপি এবং প্রতিবন্ধি শিশু সেবায় বিশেষজ্ঞ।",
+      en: "Orthopedic, neuro rehabilitation and dental treatment in Kapasia — CRP-standard physiotherapy and specialist special needs child therapy.",
     },
     book: { bn: "অ্যাপয়েন্টমেন্ট নিন", en: "Book Appointment" },
     call: { bn: "এখনই কল করুন", en: "Contact Now" },
@@ -32,18 +32,18 @@ export const I18N = {
     items: {
       bn: [
         "BMDC নিবন্ধিত চিকিৎসক",
-        "ডিজিটাল এক্স-রে",
-        "জীবাণুমুক্ত পরিবেশ",
+        "ডিজিটাল এক্স-রে ও আল্ট্রাসাউন্ড",
+        "প্রতিবন্ধি শিশু ফিজিওথেরাপি",
         "নগদ / বিকাশ / কার্ড",
-        "ঘরোয়া ফিজিও সেবা",
+        "সিআরপি-মানের ফিজিওথেরাপি",
         "জরুরি ডেন্টাল সহায়তা",
       ],
       en: [
         "BMDC‑registered doctors",
-        "Digital X‑ray onsite",
-        "Sterile environment",
+        "Digital X‑ray & ultrasound",
+        "Special needs child physio",
         "Cash / bKash / Card",
-        "Home physio visits",
+        "CRP‑standard physiotherapy",
         "Emergency dental care",
       ],
     },
@@ -172,8 +172,8 @@ export const I18N = {
     eyebrow: { bn: "যোগাযোগ", en: "Visit us" },
     title: { bn: "আমরা কাপাসিয়ায় আছি।", en: "We're in Kapasia." },
     addr: {
-      bn: "২য় তলা, শীতলক্ষা প্লাজা, চাষাড়া, কাপাসিয়া, বাংলাদেশ",
-      en: "2nd floor, Shitolokkha Plaza, Chashara, Kapasia, Bangladesh",
+      bn: "২য় তলা, ২০৪ নং কক্ষ, মেইন রোড, কাপাসিয়া, গাজীপুর, বাংলাদেশ",
+      en: "2nd Floor, Room 204, Main Road, Kapasia, Gazipur, Bangladesh",
     },
     hours: {
       bn: "শনি–বৃহস্পতি · সকাল ৯টা – রাত ৯টা",

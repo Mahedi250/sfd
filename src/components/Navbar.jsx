@@ -87,14 +87,10 @@ export default function Navbar({ lang, setLang, onBook }) {
         </div>
       </div>
 
-      <style>{`
-        @media (max-width: 880px) {
-          .nav-links { display: none !important; }
-          .desktop-only { display: none !important; }
-          .nav-burger { display: inline-flex !important; }
-        }
+      <style dangerouslySetInnerHTML={{ __html: `
+        @media (max-width: 880px) { .nav-links { display: none !important; } .desktop-only { display: none !important; } .nav-burger { display: inline-flex !important; } }
         @media (min-width: 881px) { .nav-mobile { display: none !important; } }
-      `}</style>
+      ` }} />
     </header>
   );
 }
