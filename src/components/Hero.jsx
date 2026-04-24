@@ -1,10 +1,18 @@
 "use client";
+import { useState, useEffect, useCallback } from "react";
 import { I18N, T } from "@/lib/i18n";
 import { Icons } from "@/lib/icons";
 import Reveal from "@/components/ui/Reveal";
 import Eyebrow from "@/components/ui/Eyebrow";
 import BtnPrimary from "@/components/ui/BtnPrimary";
 import BtnGhost from "@/components/ui/BtnGhost";
+
+// Drop your PNGs into /public/assets/ and update src e.g. "/assets/slide1.png"
+const HERO_SLIDES = [
+  { src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80", label: "Expert Physiotherapy" },
+  { src: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=900&q=80",  label: "Neuro Rehabilitation" },
+  { src: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80",    label: "Advanced Treatment"   },
+];
 
 const DEPT_CHIPS = [
   { bn: "অর্থোপেডিক",      en: "Orthopedic",    tone: "blue"  },
@@ -16,6 +24,11 @@ const DEPT_CHIPS = [
 export default function Hero({ lang, onBook }) {
   const t = I18N.hero;
   const ff = lang === "bn" ? "'Hind Siliguri', sans-serif" : "'Inter', sans-serif";
+
+  const [slide, setSlide] = useState(0);
+  const next = useCallback(() => setSlide(s => (s + 1) % HERO_SLIDES.length), []);
+  const prev = useCallback(() => setSlide(s => (s - 1 + HERO_SLIDES.length) % HERO_SLIDES.length), []);
+  useEffect(() => { const id = setInterval(next, 4500); return () => clearInterval(id); }, [next]);
 
   return (
     <section id="top" data-screen-label="Hero" style={{ position: "relative", overflow: "hidden" }} className="hero-section">
@@ -100,17 +113,55 @@ export default function Hero({ lang, onBook }) {
           </Reveal>
         </div>
 
-        {/* ── RIGHT: art ── */}
+        {/* ── RIGHT: slider ── */}
         <Reveal delay={180}>
           <div style={{ position: "relative", height: 560 }} className="hero-art">
-            {/* main image */}
-            <div style={{ position: "absolute", top: 0, right: 0, width: "82%", height: "72%", borderRadius: 24, boxShadow: "var(--shadow-lg)", overflow: "hidden", border: "1px solid var(--line)", backgroundImage: "url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 40%, rgba(11,18,32,.35))" }}/>
+
+            {/* ── slider frame ── */}
+            <div className="hero-art-frame" style={{ position: "absolute", top: 0, right: 0, left: 0, bottom: 80, borderRadius: 28, overflow: "hidden", boxShadow: "var(--shadow-lg)", border: "1px solid var(--line)" }}>
+
+              {/* slides */}
+              {HERO_SLIDES.map((s, i) => (
+                <div key={i} style={{ position: "absolute", inset: 0, backgroundImage: `url('${s.src}')`, backgroundSize: "cover", backgroundPosition: "center", opacity: slide === i ? 1 : 0, transition: "opacity 0.85s cubic-bezier(.4,0,.2,1)", zIndex: slide === i ? 1 : 0 }}/>
+              ))}
+
+              {/* gradient overlay */}
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(11,18,32,.08) 0%, transparent 35%, rgba(11,18,32,.55) 100%)", zIndex: 2 }}/>
+
+              {/* slide label */}
+              <div style={{ position: "absolute", bottom: 56, left: 20, zIndex: 3 }}>
+                <span style={{ display: "inline-block", background: "rgba(255,255,255,.15)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,.25)", borderRadius: 999, padding: "4px 12px", fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: "0.04em", textTransform: "uppercase", transition: "opacity 0.4s" }}>
+                  {HERO_SLIDES[slide].label}
+                </span>
+              </div>
+
+              {/* dot indicators */}
+              <div style={{ position: "absolute", bottom: 18, left: "50%", transform: "translateX(-50%)", display: "flex", alignItems: "center", gap: 6, zIndex: 3 }}>
+                {HERO_SLIDES.map((_, i) => (
+                  <button key={i} onClick={() => setSlide(i)} aria-label={`Slide ${i + 1}`} style={{ width: slide === i ? 26 : 8, height: 8, borderRadius: 999, background: slide === i ? "#fff" : "rgba(255,255,255,.45)", border: "none", cursor: "pointer", padding: 0, transition: "all 0.35s cubic-bezier(.4,0,.2,1)" }}/>
+                ))}
+              </div>
+
+              {/* prev arrow */}
+              <button onClick={prev} aria-label="Previous" style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", zIndex: 3, width: 38, height: 38, borderRadius: "50%", background: "rgba(255,255,255,.82)", backdropFilter: "blur(6px)", border: "1px solid rgba(255,255,255,.6)", boxShadow: "0 2px 10px rgba(11,18,32,.18)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.2s" }}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="var(--ink)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+
+              {/* next arrow */}
+              <button onClick={next} aria-label="Next" style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", zIndex: 3, width: 38, height: 38, borderRadius: "50%", background: "rgba(255,255,255,.82)", backdropFilter: "blur(6px)", border: "1px solid rgba(255,255,255,.6)", boxShadow: "0 2px 10px rgba(11,18,32,.18)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.2s" }}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="var(--ink)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
             </div>
-            {/* secondary image — hidden on mobile */}
-            <div className="hero-art-secondary" style={{ position: "absolute", bottom: 20, left: 0, width: "52%", height: "44%", borderRadius: 20, boxShadow: "var(--shadow-md)", overflow: "hidden", border: "3px solid #fff", backgroundImage: "url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=900&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}/>
+
+            {/* ── thumbnail strip ── */}
+            <div className="hero-art-thumbs" style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 70, display: "flex", gap: 10 }}>
+              {HERO_SLIDES.map((s, i) => (
+                <button key={i} onClick={() => setSlide(i)} style={{ flex: 1, borderRadius: 14, overflow: "hidden", border: slide === i ? "2px solid var(--blue)" : "2px solid transparent", boxShadow: slide === i ? "0 0 0 1px var(--blue-soft)" : "none", backgroundImage: `url('${s.src}')`, backgroundSize: "cover", backgroundPosition: "center", cursor: "pointer", transition: "border 0.3s, box-shadow 0.3s", padding: 0 }}/>
+              ))}
+            </div>
+
             {/* satisfaction badge */}
-            <div className="hero-float-stat" style={{ position: "absolute", top: "8%", left: "-4%", background: "#fff", border: "1px solid var(--line)", borderRadius: 16, padding: "14px 16px", boxShadow: "var(--shadow-md)", display: "flex", alignItems: "center", gap: 12, animation: "floaty 6s ease-in-out infinite" }}>
+            <div className="hero-float-stat" style={{ position: "absolute", top: "8%", left: "-4%", background: "#fff", border: "1px solid var(--line)", borderRadius: 16, padding: "14px 16px", boxShadow: "var(--shadow-md)", display: "flex", alignItems: "center", gap: 12, animation: "floaty 6s ease-in-out infinite", zIndex: 4 }}>
               <div style={{ width: 38, height: 38, borderRadius: 10, background: "var(--blue-soft)", color: "var(--blue-ink)", display: "grid", placeItems: "center" }}>
                 <Icons.Heart />
               </div>
@@ -119,8 +170,9 @@ export default function Hero({ lang, onBook }) {
                 <div style={{ fontSize: 11, color: "var(--ink-3)" }}>patient satisfaction</div>
               </div>
             </div>
+
             {/* availability badge */}
-            <div className="hero-float-avail" style={{ position: "absolute", bottom: "6%", right: "-2%", background: "#fff", border: "1px solid var(--line)", borderRadius: 16, padding: "14px 16px", boxShadow: "var(--shadow-md)", display: "flex", alignItems: "center", gap: 12, animation: "floaty 7s ease-in-out infinite .6s" }}>
+            <div className="hero-float-avail" style={{ position: "absolute", bottom: "18%", right: "-2%", background: "#fff", border: "1px solid var(--line)", borderRadius: 16, padding: "14px 16px", boxShadow: "var(--shadow-md)", display: "flex", alignItems: "center", gap: 12, animation: "floaty 7s ease-in-out infinite .6s", zIndex: 4 }}>
               <div style={{ position: "relative" }}>
                 <div style={{ width: 10, height: 10, borderRadius: 999, background: "var(--green)" }}/>
                 <div style={{ position: "absolute", inset: -4, borderRadius: 999, animation: "pulse-ring 1.8s infinite" }}/>
@@ -132,26 +184,37 @@ export default function Hero({ lang, onBook }) {
                 <div style={{ fontSize: 11, color: "var(--ink-3)" }} className="lang-swap">{T(t.hint, lang)}</div>
               </div>
             </div>
+
           </div>
         </Reveal>
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 960px) {
-          .hero-grid { grid-template-columns: 1fr !important; gap: 0 !important; padding: 52px 28px 40px !important; }
-          .hero-art { display: none !important; }
+          .hero-grid { grid-template-columns: 1fr !important; gap: 24px !important; padding: 52px 28px 48px !important; }
           .hero-brand-strip { display: none !important; }
+          .hero-art { height: 320px !important; }
+          .hero-art-thumbs { height: 56px !important; gap: 8px !important; }
+          .hero-art-frame { bottom: 66px !important; border-radius: 20px !important; }
+          .hero-float-stat { display: none !important; }
+          .hero-float-avail { display: none !important; }
         }
         @media (max-width: 600px) {
-          .hero-grid { padding: 40px 18px 32px !important; }
+          .hero-grid { padding: 36px 18px 40px !important; gap: 20px !important; }
+          .hero-art { height: 260px !important; }
+          .hero-art-thumbs { height: 48px !important; gap: 6px !important; }
+          .hero-art-frame { bottom: 58px !important; border-radius: 16px !important; }
           .hero-sub { font-size: 15px !important; margin-bottom: 18px !important; }
           .hero-chips { gap: 6px !important; margin-bottom: 20px !important; }
-          .hero-btns { gap: 10px !important; }
-          .hero-btns > * { flex: 1 1 140px; }
+          .hero-btns { gap: 8px !important; }
+          .hero-btns > * { flex: 1 1 auto; font-size: 13px !important; padding: 11px 14px !important; gap: 6px !important; }
           .hero-stats { grid-template-columns: 1fr !important; gap: 12px !important; margin-top: 28px !important; }
         }
         @media (max-width: 380px) {
-          .hero-btns > * { flex: 1 1 100% !important; }
+          .hero-art { height: 220px !important; }
+          .hero-art-thumbs { display: none !important; }
+          .hero-art-frame { bottom: 0 !important; border-radius: 14px !important; }
+          .hero-btns > * { font-size: 12px !important; padding: 10px 12px !important; }
         }
       ` }} />
     </section>

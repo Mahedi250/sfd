@@ -8,6 +8,7 @@ const cls = {
   border: "1px solid var(--line)",
   cursor: "pointer", textDecoration: "none",
   transition: "background .2s ease, border-color .2s ease",
+  whiteSpace: "nowrap",
 };
 
 export default function BtnGhost({ children, onClick, href, icon }) {

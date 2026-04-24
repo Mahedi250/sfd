@@ -10,6 +10,7 @@ const cls = {
   cursor: "pointer", textDecoration: "none",
   transition: "transform .2s ease, box-shadow .2s ease, background .2s ease",
   justifyContent: "center",
+  whiteSpace: "nowrap",
 };
 
 export default function BtnPrimary({ children, onClick, type = "button", href, icon, full }) {
