@@ -125,7 +125,7 @@ export const I18N = {
   about: {
     eyebrow: { bn: "আমাদের সম্পর্কে", en: "About us" },
     title: {
-      bn: "মানুষ প্রথম।\nপদ্ধতি দ্বিতীয়।",
+      bn: "আপনার সুস্বাস্থ্যই আমাদের লক্ষ্য",
       en: "People first.\nProtocol second.",
     },
     body: {
@@ -133,10 +133,10 @@ export const I18N = {
       en: "Since 2013, we've believed healing is a relationship. Every patient is different, every plan is different. Modern equipment, experienced clinicians, and — most importantly — time to listen.",
     },
     points: [
-      { bn: "BMDC‑নিবন্ধিত ৬ জন চিকিৎসক", en: "6 BMDC‑registered clinicians" },
+      { bn: "BMDC‑নিবন্ধিত  চিকিৎসক", en: "BMDC‑registered clinicians" },
       {
-        bn: "ডিজিটাল এক্স‑রে ও আল্ট্রাসাউন্ড",
-        en: "Digital X‑ray & ultrasound onsite",
+        bn: "ডিজিটাল এক্স‑রে",
+        en: "Digital X‑ray ",
       },
       { bn: "জীবাণুমুক্ত, শান্ত পরিবেশ", en: "Sterile, calm environment" },
       {
@@ -149,7 +149,7 @@ export const I18N = {
     eyebrow: { bn: "অ্যাপয়েন্টমেন্ট", en: "Appointment" },
     title: { bn: "আজই একটি সময় বেছে নিন।", en: "Reserve a time today." },
     sub: {
-      bn: "৯০ সেকেন্ডে বুক করুন — নিশ্চিতকরণ আসবে SMS ও WhatsApp-এ।",
+      bn: "৯০ সেকেন্ডে বুক করুন।",
       en: "Book in 90 seconds — confirmation by SMS & WhatsApp.",
     },
     name: { bn: "পূর্ণ নাম", en: "Full name" },
