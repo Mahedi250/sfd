@@ -140,8 +140,8 @@ export const I18N = {
       },
       { bn: "জীবাণুমুক্ত, শান্ত পরিবেশ", en: "Sterile, calm environment" },
       {
-        bn: "বাংলা, ইংরেজি ও আরবি কথোপকথন",
-        en: "Care in Bangla, English & Arabic",
+        bn: "বিশ্বস্ত স্বাস্থ্যসেবা",
+        en: "Trusted Healthcare",
       },
     ],
   },
