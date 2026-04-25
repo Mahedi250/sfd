@@ -39,6 +39,7 @@ export const Icons = {
   Root:     () => <I><path d="M9 3h6l-1 5 2 5-2 3-2-1-2 1-2-3 2-5-1-5z"/></I>,
   Cosmetic: () => <I><path d="M12 3l1.8 4.5L18 9l-4.2 1.5L12 15l-1.8-4.5L6 9l4.2-1.5z"/><path d="M19 15l.9 2 2 .9-2 .9-.9 2-.9-2-2-.9 2-.9z"/></I>,
 
+  Home:     () => <I><path d="M3 11l9-8 9 8v9a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><path d="M9 21V12h6v9"/></I>,
   Doctor:   () => <I><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/><path d="M12 15v3M10.5 16.5h3"/></I>,
   Gear:     () => <I><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></I>,
   Heart:    () => <I><path d="M12 20s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.5-7 10-7 10z"/></I>,

@@ -56,6 +56,7 @@ export const I18N = {
     },
     physio: { bn: "ফিজিওথেরাপি", en: "Physiotherapy" },
     dental: { bn: "ডেন্টাল কেয়ার", en: "Dental Care" },
+    homePhysio: { bn: "হোম ফিজিওথেরাপি", en: "Home Physiotherapy" },
     physioDesc: {
       bn: "ব্যথা, আঘাত ও পুনর্বাসনের জন্য প্রমাণভিত্তিক চিকিৎসা।",
       en: "Evidence‑based therapy for pain, injury, and rehabilitation.",
@@ -63,6 +64,10 @@ export const I18N = {
     dentalDesc: {
       bn: "প্রতিরোধ থেকে কসমেটিক — সম্পূর্ণ ডেন্টাল সেবা।",
       en: "From prevention to cosmetic — complete dental care.",
+    },
+    homePhysioDesc: {
+      bn: "আপনার বাড়িতে বসে পেশাদার ফিজিওথেরাপি সেবা।",
+      en: "Professional physiotherapy delivered to your home.",
     },
     from: { bn: "শুরু", en: "From" },
     items: {
@@ -120,29 +125,50 @@ export const I18N = {
         },
         price: "৳৪,৮০০",
       },
+      homeVisit: {
+        bn: "হোম ভিজিট থেরাপি",
+        en: "Home Visit Therapy",
+        desc: {
+          bn: "অভিজ্ঞ থেরাপিস্ট আপনার বাড়িতে এসে চিকিৎসা দেবেন।",
+          en: "An experienced therapist visits and treats you at home.",
+        },
+        price: "৳১,৫০০",
+      },
+      postSurgery: {
+        bn: "অপারেশন পরবর্তী সেবা",
+        en: "Post‑Surgery Rehab",
+        desc: {
+          bn: "অস্ত্রোপচারের পর দ্রুত সুস্থতার জন্য বাড়িতে পুনর্বাসন।",
+          en: "Home rehabilitation for faster recovery after surgery.",
+        },
+        price: "৳১,৮০০",
+      },
+      elderlyCare: {
+        bn: "বয়স্ক ও প্রতিবন্ধী সেবা",
+        en: "Elderly & Disability Care",
+        desc: {
+          bn: "বয়স্ক ও প্রতিবন্ধী রোগীদের জন্য বিশেষ হোম থেরাপি।",
+          en: "Specialist home therapy for elderly and disabled patients.",
+        },
+        price: "৳১,৬০০",
+      },
     },
   },
   about: {
-    eyebrow: { bn: "আমাদের সম্পর্কে", en: "About us" },
+    eyebrow: { bn: "হোম ফিজিওথেরাপি সেবা", en: "Home Physiotherapy" },
     title: {
-      bn: "আপনার সুস্বাস্থ্যই আমাদের লক্ষ্য",
-      en: "People first.\nProtocol second.",
+      bn: "আপনার বাড়িতেই শুরু হোক\nসুস্থতার পথ।",
+      en: "Healing that comes\nto your door.",
     },
     body: {
-      bn: "২০১৩ সাল থেকে শীতলক্ষা কেন্দ্রে আমরা বিশ্বাস করি — নিরাময় একটি সম্পর্ক। প্রতিটি রোগী আলাদা, প্রতিটি পরিকল্পনা আলাদা। আধুনিক যন্ত্র, অভিজ্ঞ চিকিৎসক, আর সবচেয়ে জরুরি — সময় নিয়ে শোনা।",
-      en: "Since 2013, we've believed healing is a relationship. Every patient is different, every plan is different. Modern equipment, experienced clinicians, and — most importantly — time to listen.",
+      bn: "স্ট্রোক হয়েছে, হাঁটতে কষ্ট হচ্ছে, কিংবা বয়সের কারণে চলাফেরা কঠিন হয়ে পড়েছে — হাসপাতালে আসতে না পারলেও চিকিৎসা থামবে না। আমাদের অভিজ্ঞ থেরাপিস্ট আপনার বাড়িতে এসে সেই যত্নটুকু দেবেন, যা সত্যিই দরকার।",
+      en: "After a stroke, a surgery, or simply because age has made moving harder — if coming to a clinic isn't possible, care shouldn't stop. Our experienced therapists visit your home and deliver the treatment your loved one truly needs.",
     },
     points: [
-      { bn: "BMDC‑নিবন্ধিত  চিকিৎসক", en: "BMDC‑registered clinicians" },
-      {
-        bn: "ডিজিটাল এক্স‑রে",
-        en: "Digital X‑ray ",
-      },
-      { bn: "জীবাণুমুক্ত, শান্ত পরিবেশ", en: "Sterile, calm environment" },
-      {
-        bn: "বিশ্বস্ত স্বাস্থ্যসেবা",
-        en: "Trusted Healthcare",
-      },
+      { bn: "স্ট্রোক ও প্যারালাইসিস রোগী", en: "Stroke & paralysis patients" },
+      { bn: "বিছানায় শয্যাশায়ী রোগী",     en: "Bed-bound & immobile patients" },
+      { bn: "বয়স্ক ও প্রতিবন্ধী সেবা",    en: "Elderly & disability care" },
+      { bn: "অপারেশন পরবর্তী পুনর্বাসন",   en: "Post-surgery rehabilitation" },
     ],
   },
   appt: {
@@ -172,8 +198,8 @@ export const I18N = {
     eyebrow: { bn: "যোগাযোগ", en: "Visit us" },
     title: { bn: "আমরা কাপাসিয়ায় আছি।", en: "We're in Kapasia." },
     addr: {
-      bn: "২য় তলা, ২০৪ নং কক্ষ, মেইন রোড, কাপাসিয়া, গাজীপুর, বাংলাদেশ",
-      en: "2nd Floor, Room 204, Main Road, Kapasia, Gazipur, Bangladesh",
+      bn: "২য় তলা, ২০৪ নং কক্ষ, মেইন রোড, শীতলক্ষা জেনারেল হাসপাতাল অ্যান্ড ডায়াগনস্টিক সেন্টার,কাপাসিয়া, গাজীপুর, বাংলাদেশ ",
+      en: "2nd Floor, Room 204, Main Road, Shitolokka General Hospital, Kapasia, Gazipur, Bangladesh",
     },
     hours: {
       bn: "শনি–বৃহস্পতি · সকাল ৯টা – রাত ৯টা",

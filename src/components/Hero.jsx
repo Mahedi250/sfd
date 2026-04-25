@@ -10,7 +10,7 @@ import BtnGhost from "@/components/ui/BtnGhost";
 // Drop your PNGs into /public/assets/ and update src e.g. "/assets/slide1.png"
 const HERO_SLIDES = [
   { src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80", label: "Expert Physiotherapy" },
-  { src: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=900&q=80",  label: "Neuro Rehabilitation" },
+  { src: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=900&q=80",  label: "Dental Department" },
   { src: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80",    label: "Advanced Treatment"   },
 ];
 
@@ -58,11 +58,11 @@ export default function Hero({ lang, onBook }) {
             </h1>
           </Reveal>
 
-          {/* brand strip — hidden on mobile */}
+          {/* brand strip */}
           <Reveal delay={120}>
-            <div className="hero-brand-strip" style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16, color: "var(--ink-3)", fontSize: 13, fontWeight: 600 }}>
-              <span style={{ width: 28, height: 1, background: "var(--line)", flexShrink: 0 }}/>
-              <span style={{ fontFamily: "'Hind Siliguri', sans-serif", letterSpacing: 0 }}>{I18N.brand.bn}</span>
+            <div className="hero-brand-strip" style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 16, background: "var(--blue-soft)", border: "1px solid color-mix(in oklab, var(--blue) 20%, transparent)", borderRadius: 999, padding: "6px 14px 6px 10px" }}>
+              <span style={{ width: 6, height: 6, borderRadius: 999, background: "var(--blue)", flexShrink: 0 }}/>
+              <span style={{ fontFamily: "'Hind Siliguri', sans-serif", letterSpacing: 0, fontSize: 13, fontWeight: 700, color: "var(--blue-ink)" }}>{I18N.brand.bn}</span>
             </div>
           </Reveal>
 
@@ -100,17 +100,6 @@ export default function Hero({ lang, onBook }) {
             </div>
           </Reveal>
 
-          {/* stats */}
-          <Reveal delay={270}>
-            <div style={{ marginTop: 40, paddingTop: 22, borderTop: "1px solid var(--line)", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }} className="hero-stats">
-              {[t.stat1, t.stat2, t.stat3].map((s, i) => (
-                <div key={i} className="lang-swap" style={{ fontSize: 13, fontWeight: 600, color: "var(--ink-2)", lineHeight: 1.4, fontFamily: ff }}>
-                  <span style={{ display: "inline-block", width: 7, height: 7, borderRadius: 999, background: i === 0 ? "var(--blue)" : i === 1 ? "var(--green)" : "var(--ink)", marginRight: 7, verticalAlign: "middle" }}/>
-                  {T(s, lang)}
-                </div>
-              ))}
-            </div>
-          </Reveal>
         </div>
 
         {/* ── RIGHT: slider ── */}
@@ -192,7 +181,6 @@ export default function Hero({ lang, onBook }) {
       <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 960px) {
           .hero-grid { grid-template-columns: 1fr !important; gap: 24px !important; padding: 52px 28px 48px !important; }
-          .hero-brand-strip { display: none !important; }
           .hero-art { height: 320px !important; }
           .hero-art-thumbs { height: 56px !important; gap: 8px !important; }
           .hero-art-frame { bottom: 66px !important; border-radius: 20px !important; }

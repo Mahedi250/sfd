@@ -42,10 +42,21 @@ export default function Navbar({ lang, setLang, onBook }) {
     }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "14px 40px", display: "flex", alignItems: "center", gap: 24 }}>
         <a href="#top" onClick={() => setOpen(false)} style={{ display: "inline-flex", alignItems: "center", gap: 10, textDecoration: "none", color: "var(--ink)" }}>
-          <Icons.Brand size={32}/>
-          <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.1 }}>
-            <span className="lang-swap" style={{ fontFamily: "'Hind Siliguri', sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "-0.01em" }}>শীতলক্ষা</span>
-            <span style={{ fontSize: 10.5, color: "var(--ink-3)", fontWeight: 500, letterSpacing: ".14em", textTransform: "uppercase" }}>Physio · Dental</span>
+          <Icons.Brand size={34}/>
+          <div style={{ display: "flex", flexDirection: "column", gap: 5, lineHeight: 1, paddingLeft: 2, borderLeft: "2px solid var(--line)", marginLeft: 2 }}>
+            <span className="lang-swap" style={{ fontFamily: "'Hind Siliguri', sans-serif", fontSize: 15, fontWeight: 800, letterSpacing: "-0.01em", color: "var(--ink)" }}>শীতলক্ষা</span>
+            <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 3, fontSize: 9.5, fontWeight: 700, letterSpacing: ".05em", color: "var(--blue-ink)" }}>
+                <span style={{ width: 5, height: 5, borderRadius: 999, background: "var(--blue)", flexShrink: 0 }}/>
+                PHYSIO
+              </span>
+              <span style={{ color: "var(--line-2)", fontSize: 11, fontWeight: 300 }}>|</span>
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 3, fontSize: 9.5, fontWeight: 700, letterSpacing: ".05em", color: "var(--green-ink)" }}>
+                <span style={{ width: 5, height: 5, borderRadius: 999, background: "var(--green)", flexShrink: 0 }}/>
+                DENTAL
+              </span>
+              <span className="logo-dept" style={{ fontSize: 9.5, fontWeight: 500, letterSpacing: ".05em", color: "var(--ink-3)", textTransform: "uppercase" }}>Dept</span>
+            </div>
           </div>
         </a>
 
@@ -90,6 +101,7 @@ export default function Navbar({ lang, setLang, onBook }) {
       <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 880px) { .nav-links { display: none !important; } .desktop-only { display: none !important; } .nav-burger { display: inline-flex !important; } }
         @media (min-width: 881px) { .nav-mobile { display: none !important; } }
+        @media (max-width: 360px) { .logo-dept { display: none !important; } }
       ` }} />
     </header>
   );

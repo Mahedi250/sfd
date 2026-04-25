@@ -8,10 +8,21 @@ export default function Footer({ lang }) {
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: 40 }} className="ftr-grid">
         <div>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "#fff" }}>
-            <Icons.Brand/>
-            <div style={{ lineHeight: 1.15 }}>
-              <div style={{ fontSize: 14, fontWeight: 700, fontFamily: "'Hind Siliguri', sans-serif" }}>শীতলক্ষা</div>
-              <div style={{ fontSize: 10, letterSpacing: ".14em", textTransform: "uppercase", color: "#8E99AD" }}>Physio · Dental</div>
+            <Icons.Brand size={34}/>
+            <div style={{ display: "flex", flexDirection: "column", gap: 5, lineHeight: 1, paddingLeft: 2, borderLeft: "2px solid #2A3A52", marginLeft: 2 }}>
+              <span style={{ fontFamily: "'Hind Siliguri', sans-serif", fontSize: 15, fontWeight: 800, letterSpacing: "-0.01em", color: "#fff" }}>শীতলক্ষা</span>
+              <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 3, fontSize: 9.5, fontWeight: 700, letterSpacing: ".05em", color: "oklch(0.75 0.10 235)" }}>
+                  <span style={{ width: 5, height: 5, borderRadius: 999, background: "var(--blue)", flexShrink: 0 }}/>
+                  PHYSIO
+                </span>
+                <span style={{ color: "#2A3A52", fontSize: 11 }}>|</span>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 3, fontSize: 9.5, fontWeight: 700, letterSpacing: ".05em", color: "oklch(0.75 0.10 145)" }}>
+                  <span style={{ width: 5, height: 5, borderRadius: 999, background: "var(--green)", flexShrink: 0 }}/>
+                  DENTAL
+                </span>
+                <span style={{ fontSize: 9.5, fontWeight: 500, letterSpacing: ".05em", color: "#8E99AD", textTransform: "uppercase" }}>Dept</span>
+              </div>
             </div>
           </div>
           <p style={{ marginTop: 18, fontSize: 14, lineHeight: 1.55, color: "#A7B0C1", maxWidth: 320, fontFamily: lang === "bn" ? "'Hind Siliguri', sans-serif" : "'Inter', sans-serif" }} className="lang-swap">

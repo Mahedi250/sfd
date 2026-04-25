@@ -15,21 +15,39 @@ export default function Appointment({ lang, formRef }) {
   const t = I18N.appt;
   const [form, setForm] = useState({ name: "", phone: "", service: "", date: "", time: "", notes: "" });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
   const services = [
-    { v: "pain",   label: I18N.servicesSection.items.pain },
-    { v: "stroke", label: I18N.servicesSection.items.stroke },
-    { v: "sports", label: I18N.servicesSection.items.sports },
-    { v: "clean",  label: I18N.servicesSection.items.clean },
-    { v: "root",   label: I18N.servicesSection.items.root },
-    { v: "cosm",   label: I18N.servicesSection.items.cosm },
+    { v: "physio",     label: I18N.servicesSection.physio },
+    { v: "dental",     label: I18N.servicesSection.dental },
+    { v: "homePhysio", label: I18N.servicesSection.homePhysio },
   ];
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
+    setSending(true);
+    setError(false);
+    try {
+      const res = await fetch("/api/appointment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setSent(true);
+        setForm({ name: "", phone: "", service: "", date: "", time: "", notes: "" });
+        setTimeout(() => setSent(false), 5000);
+      } else {
+        setError(true);
+      }
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   const infoRows = [
@@ -128,7 +146,7 @@ export default function Appointment({ lang, formRef }) {
               {/* phone + service */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} className="appt-2col">
                 <Field label={<span className="lang-swap">{T(t.phone, lang)}</span>}>
-                  <input required type="tel" value={form.phone} onChange={set("phone")} placeholder="+880 1X XXXX XXXX" style={inputStyle} onFocus={onFocusIn} onBlur={onFocusOut}/>
+                  <input required type="tel" value={form.phone} onChange={set("phone")} placeholder="01XXXXXXXXX" pattern="[0-9]{11}" maxLength={11} title={lang === "bn" ? "১১ সংখ্যার মোবাইল নম্বর দিন" : "Enter 11-digit mobile number"} style={inputStyle} onFocus={onFocusIn} onBlur={onFocusOut}/>
                 </Field>
                 <Field label={<span className="lang-swap">{T(t.service, lang)}</span>}>
                   <select required value={form.service} onChange={set("service")} style={inputStyle} onFocus={onFocusIn} onBlur={onFocusOut}>
@@ -191,10 +209,12 @@ export default function Appointment({ lang, formRef }) {
                 <div style={{ fontSize: 12, color: "var(--ink-3)" }} className="lang-swap appt-footer-item">
                   {sent
                     ? <span style={{ color: "var(--green-ink)", fontWeight: 700 }}>✓ {T(t.confirm, lang)}</span>
+                    : error
+                    ? <span style={{ color: "#c0392b", fontWeight: 700 }}>{lang === "bn" ? "সমস্যা হয়েছে, আবার চেষ্টা করুন।" : "Something went wrong. Please try again."}</span>
                     : T(t.consent, lang)}
                 </div>
-                <BtnPrimary type="submit" icon={<Icons.Arrow/>} className="appt-footer-item">
-                  <span className="lang-swap">{T(t.submit, lang)}</span>
+                <BtnPrimary type="submit" icon={sending ? null : <Icons.Arrow/>} className="appt-footer-item">
+                  <span className="lang-swap">{sending ? (lang === "bn" ? "পাঠানো হচ্ছে…" : "Sending…") : T(t.submit, lang)}</span>
                 </BtnPrimary>
               </div>
             </form>
