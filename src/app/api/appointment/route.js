@@ -1,9 +1,7 @@
-export async function POST(request) {
-  const scriptUrl = process.env.GOOGLE_SCRIPT_URL;
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxARh4NBMWxujEusXWzOri7JlErz4r2TSte3d3WGR8qc5E5T_JODpRkJcWGahErJkTJ/exec";
 
-  if (!scriptUrl) {
-    return Response.json({ success: false, error: "GOOGLE_SCRIPT_URL not set" }, { status: 500 });
-  }
+export async function POST(request) {
+  const scriptUrl = SCRIPT_URL;
 
   try {
     const data = await request.json();
