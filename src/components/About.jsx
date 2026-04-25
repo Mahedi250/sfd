@@ -18,18 +18,18 @@ export default function About({ lang }) {
           <div style={{ position: "relative", height: 500 }} className="about-art">
 
             {/* main image — ken-burns animated */}
-            <div style={{ position: "absolute", inset: "0 14% 14% 0", borderRadius: 24, overflow: "hidden", border: "1px solid var(--line)", boxShadow: "var(--shadow-lg)" }}>
-              <div style={{ position: "absolute", inset: "-6%", backgroundImage: "url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1100&q=80')", backgroundSize: "cover", backgroundPosition: "center", animation: "kenburns 14s ease-in-out infinite alternate" }}/>
+            <div className="about-main-img" style={{ position: "absolute", inset: "0 14% 14% 0", borderRadius: 24, overflow: "hidden", border: "1px solid var(--line)", boxShadow: "var(--shadow-lg)" }}>
+              <div style={{ position: "absolute", inset: "-6%", backgroundImage: "url('/assets/42097-O35ITI.jpg')", backgroundSize: "cover", backgroundPosition: "center", animation: "kenburns 14s ease-in-out infinite alternate" }}/>
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 45%, rgba(11,18,32,.45))" }}/>
             </div>
 
             {/* secondary image — elderly care */}
-            <div style={{ position: "absolute", inset: "38% 0 0 26%", borderRadius: 20, overflow: "hidden", border: "3px solid #fff", boxShadow: "var(--shadow-md)", animation: "floaty 9s ease-in-out infinite 2s" }}>
-              <div style={{ position: "absolute", inset: "-4%", backgroundImage: "url('https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=800&q=80')", backgroundSize: "cover", backgroundPosition: "center top", animation: "kenburns 16s ease-in-out infinite alternate-reverse" }}/>
+            <div className="about-secondary-img" style={{ position: "absolute", inset: "38% 0 0 26%", borderRadius: 20, overflow: "hidden", border: "3px solid #fff", boxShadow: "var(--shadow-md)", animation: "floaty 9s ease-in-out infinite 2s" }}>
+              <div style={{ position: "absolute", inset: "-4%", backgroundImage: "url('/assets/7089126.jpg')", backgroundSize: "cover", backgroundPosition: "center top", animation: "kenburns 16s ease-in-out infinite alternate-reverse" }}/>
             </div>
 
             {/* floating — home visit steps card */}
-            <div style={{ position: "absolute", top: "5%", left: "-8%", background: "#fff", border: "1px solid var(--line)", borderRadius: 18, padding: "14px 16px", boxShadow: "var(--shadow-md)", animation: "floaty 6s ease-in-out infinite", zIndex: 3, minWidth: 188 }}>
+            <div className="about-float-card" style={{ position: "absolute", top: "5%", left: "-8%", background: "#fff", border: "1px solid var(--line)", borderRadius: 18, padding: "14px 16px", boxShadow: "var(--shadow-md)", animation: "floaty 6s ease-in-out infinite", zIndex: 3, minWidth: 188 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
                 <div style={{ width: 32, height: 32, borderRadius: 9, background: "var(--blue-soft)", color: "var(--blue-ink)", display: "grid", placeItems: "center", flexShrink: 0 }}>
                   <Icons.Home />
@@ -51,7 +51,7 @@ export default function About({ lang }) {
             </div>
 
             {/* floating — live availability */}
-            <div style={{ position: "absolute", bottom: "6%", left: "-4%", background: "#fff", border: "1px solid var(--line)", borderRadius: 18, padding: "12px 16px", boxShadow: "var(--shadow-md)", display: "flex", alignItems: "center", gap: 12, animation: "floaty 7.5s ease-in-out infinite 1s", zIndex: 3 }}>
+            <div className="about-float-stat" style={{ position: "absolute", bottom: "6%", left: "-4%", background: "#fff", border: "1px solid var(--line)", borderRadius: 18, padding: "12px 16px", boxShadow: "var(--shadow-md)", display: "flex", alignItems: "center", gap: 12, animation: "floaty 7.5s ease-in-out infinite 1s", zIndex: 3 }}>
               <div style={{ position: "relative", flexShrink: 0 }}>
                 <div style={{ width: 10, height: 10, borderRadius: 999, background: "var(--green)" }}/>
                 <div style={{ position: "absolute", inset: -4, borderRadius: 999, animation: "pulse-ring 1.8s infinite" }}/>
@@ -113,13 +113,17 @@ export default function About({ lang }) {
       <style>{`
         @media (max-width: 860px) {
           .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-          .about-art { height: 360px !important; }
+          .about-art { height: 380px !important; }
+          .about-main-img { inset: 0 !important; }
+          .about-secondary-img { display: none !important; }
+          .about-float-card { left: 8px !important; top: 8px !important; min-width: 160px !important; font-size: 11px !important; }
+          .about-float-stat { left: 8px !important; bottom: 8px !important; }
         }
         @media (max-width: 600px) {
           .about-points { grid-template-columns: 1fr !important; }
-        }
-        @media (max-width: 480px) {
           .about-art { height: 300px !important; }
+          .about-float-card { display: none !important; }
+          .about-float-stat { display: none !important; }
         }
       `}</style>
     </Section>

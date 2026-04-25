@@ -7,11 +7,10 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import BtnPrimary from "@/components/ui/BtnPrimary";
 import BtnGhost from "@/components/ui/BtnGhost";
 
-// Drop your PNGs into /public/assets/ and update src e.g. "/assets/slide1.png"
 const HERO_SLIDES = [
-  { src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80", label: "Expert Physiotherapy" },
-  { src: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=900&q=80",  label: "Dental Department" },
-  { src: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80",    label: "Advanced Treatment"   },
+  { src: "/assets/7063343.jpg", label: "Expert Physiotherapy" },
+  { src: "/assets/dental.jpg", label: "Dental Department"    },
+  { src: "/assets/7089126.jpg", label: "Advanced Treatment"   },
 ];
 
 const DEPT_CHIPS = [
@@ -111,7 +110,7 @@ export default function Hero({ lang, onBook }) {
 
               {/* slides */}
               {HERO_SLIDES.map((s, i) => (
-                <div key={i} style={{ position: "absolute", inset: 0, backgroundImage: `url('${s.src}')`, backgroundSize: "cover", backgroundPosition: "center", opacity: slide === i ? 1 : 0, transition: "opacity 0.85s cubic-bezier(.4,0,.2,1)", zIndex: slide === i ? 1 : 0 }}/>
+                <div key={i} className="hero-slide" style={{ position: "absolute", inset: 0, backgroundImage: `url('${s.src}')`, backgroundSize: "cover", backgroundPosition: "center top", opacity: slide === i ? 1 : 0, transition: "opacity 0.85s cubic-bezier(.4,0,.2,1)", zIndex: slide === i ? 1 : 0 }}/>
               ))}
 
               {/* gradient overlay */}
@@ -181,25 +180,25 @@ export default function Hero({ lang, onBook }) {
       <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 960px) {
           .hero-grid { grid-template-columns: 1fr !important; gap: 24px !important; padding: 52px 28px 48px !important; }
-          .hero-art { height: 320px !important; }
+          .hero-art { height: 420px !important; }
           .hero-art-thumbs { height: 56px !important; gap: 8px !important; }
           .hero-art-frame { bottom: 66px !important; border-radius: 20px !important; }
           .hero-float-stat { display: none !important; }
           .hero-float-avail { display: none !important; }
+          .hero-slide { background-size: contain !important; background-position: center center !important; background-color: #f0f4f8 !important; }
         }
         @media (max-width: 600px) {
           .hero-grid { padding: 36px 18px 40px !important; gap: 20px !important; }
-          .hero-art { height: 260px !important; }
+          .hero-art { height: 360px !important; }
           .hero-art-thumbs { height: 48px !important; gap: 6px !important; }
           .hero-art-frame { bottom: 58px !important; border-radius: 16px !important; }
           .hero-sub { font-size: 15px !important; margin-bottom: 18px !important; }
           .hero-chips { gap: 6px !important; margin-bottom: 20px !important; }
           .hero-btns { gap: 8px !important; }
           .hero-btns > * { flex: 1 1 auto; font-size: 13px !important; padding: 11px 14px !important; gap: 6px !important; }
-          .hero-stats { grid-template-columns: 1fr !important; gap: 12px !important; margin-top: 28px !important; }
         }
         @media (max-width: 380px) {
-          .hero-art { height: 220px !important; }
+          .hero-art { height: 300px !important; }
           .hero-art-thumbs { display: none !important; }
           .hero-art-frame { bottom: 0 !important; border-radius: 14px !important; }
           .hero-btns > * { font-size: 12px !important; padding: 10px 12px !important; }
