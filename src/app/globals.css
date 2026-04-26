@@ -92,7 +92,12 @@ body.lang-switching .lang-swap {
   .nav-links    { display: none !important; }
   .desktop-only { display: none !important; }
   .nav-burger   { display: inline-flex !important; }
-  .nav-inner    { padding-left: 20px !important; padding-right: 20px !important; }
+  .nav-inner    { padding-left: 16px !important; padding-right: 16px !important; gap: 12px !important; }
+  .lang-toggle  { width: 100px !important; height: 34px !important; }
+}
+@media (max-width: 400px) {
+  .nav-inner   { padding-left: 12px !important; padding-right: 12px !important; gap: 8px !important; }
+  .lang-toggle { width: 86px !important; height: 32px !important; }
 }
 @media (max-width: 360px) {
   .logo-dept { display: none !important; }

@@ -6,6 +6,7 @@ export default function LangToggle({ lang, onChange }) {
     <button
       onClick={() => onChange(isBn ? "en" : "bn")}
       aria-label="Toggle language"
+      className="lang-toggle"
       style={{
         position: "relative",
         display: "inline-flex", alignItems: "center",
