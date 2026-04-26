@@ -4,9 +4,9 @@ import { Icons } from "@/lib/icons";
 
 export default function Footer({ lang }) {
   return (
-    <footer data-screen-label="Footer" style={{ background: "var(--ink)", color: "#CDD5E1", padding: "56px 40px 32px" }}>
+    <footer data-screen-label="Footer" style={{ background: "var(--ink)", color: "#CDD5E1", padding: "56px 40px 32px" }} className="footer-wrap">
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: 40 }} className="ftr-grid">
-        <div>
+        <div className="ftr-brand">
           <div style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "#fff" }}>
             <Icons.Brand size={34}/>
             <div style={{ display: "flex", flexDirection: "column", gap: 5, lineHeight: 1, paddingLeft: 2, borderLeft: "2px solid #2A3A52", marginLeft: 2 }}>
@@ -25,7 +25,7 @@ export default function Footer({ lang }) {
               </div>
             </div>
           </div>
-          <p style={{ marginTop: 18, fontSize: 14, lineHeight: 1.55, color: "#A7B0C1", maxWidth: 320, fontFamily: lang === "bn" ? "'Hind Siliguri', sans-serif" : "'Inter', sans-serif" }} className="lang-swap">
+          <p style={{ marginTop: 18, fontSize: 14, lineHeight: 1.55, color: "#A7B0C1", maxWidth: 320, fontFamily: lang === "bn" ? "'Hind Siliguri', sans-serif" : "'Inter', sans-serif" }} className="lang-swap ftr-tagline">
             {T(I18N.footer.tagline, lang)}
           </p>
         </div>
@@ -46,7 +46,7 @@ export default function Footer({ lang }) {
       </div>
       {/* banner card */}
       <div style={{ maxWidth: 1200, margin: "40px auto 0", paddingTop: 32, borderTop: "1px solid #233047" }}>
-        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <div className="ftr-banner-wrap" style={{ display: "flex", justifyContent: "flex-end" }}>
           <div className="ftr-banner" style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "1px solid #2A3A52", boxShadow: "0 4px 24px rgba(0,0,0,.35)", maxWidth: 420, width: "100%" }}>
             <img
               src="/assets/banner.jpg"
@@ -70,8 +70,23 @@ export default function Footer({ lang }) {
         </div>
       </div>
       <style dangerouslySetInnerHTML={{ __html: `
-        @media (max-width: 820px) { .ftr-grid { grid-template-columns: 1fr 1fr !important; } }
-        @media (max-width: 560px) { .ftr-banner { max-width: 100% !important; } }
+        /* tablet: brand full-width, 3 link cols below */
+        @media (max-width: 820px) {
+          .ftr-grid        { grid-template-columns: repeat(3, 1fr) !important; gap: 28px !important; }
+          .ftr-brand       { grid-column: 1 / -1 !important; border-bottom: 1px solid #1E2E42; padding-bottom: 24px; }
+          .ftr-tagline     { max-width: 100% !important; }
+          .ftr-banner-wrap { justify-content: center !important; }
+          .ftr-banner      { max-width: 100% !important; }
+        }
+        /* phone: 2-col link cols */
+        @media (max-width: 560px) {
+          .ftr-grid  { grid-template-columns: 1fr 1fr !important; gap: 22px !important; }
+          .ftr-brand { padding-bottom: 20px; }
+        }
+        /* small phone: full stack */
+        @media (max-width: 380px) {
+          .ftr-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+        }
       ` }} />
     </footer>
   );

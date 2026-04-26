@@ -40,7 +40,7 @@ export default function Navbar({ lang, setLang, onBook }) {
       borderBottom: (scrolled || open) ? "1px solid var(--line)" : "1px solid transparent",
       transition: "background .25s, border-color .25s",
     }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "14px 40px", display: "flex", alignItems: "center", gap: 24 }}>
+      <div className="nav-inner" style={{ maxWidth: 1280, margin: "0 auto", padding: "14px 40px", display: "flex", alignItems: "center", gap: 24 }}>
         <a href="#top" onClick={() => setOpen(false)} style={{ display: "inline-flex", alignItems: "center", gap: 10, textDecoration: "none", color: "var(--ink)" }}>
           <Icons.Brand size={34}/>
           <div style={{ display: "flex", flexDirection: "column", gap: 5, lineHeight: 1, paddingLeft: 2, borderLeft: "2px solid var(--line)", marginLeft: 2 }}>
@@ -73,7 +73,7 @@ export default function Navbar({ lang, setLang, onBook }) {
             <BtnPrimary onClick={onBook} icon={<Icons.Arrow/>}>{T(t.book, lang)}</BtnPrimary>
           </div>
           <button className="nav-burger" aria-label="Menu" onClick={() => setOpen((v) => !v)}
-            style={{ display: "none", width: 40, height: 40, borderRadius: 10, border: "1px solid var(--line)", background: "#fff", color: "var(--ink)", cursor: "pointer", alignItems: "center", justifyContent: "center" }}>
+            style={{ width: 40, height: 40, borderRadius: 10, border: "1px solid var(--line)", background: "#fff", color: "var(--ink)", cursor: "pointer", alignItems: "center", justifyContent: "center" }}>
             {open ? <Icons.Close/> : <Icons.Menu/>}
           </button>
         </div>
@@ -99,9 +99,7 @@ export default function Navbar({ lang, setLang, onBook }) {
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        @media (max-width: 880px) { .nav-links { display: none !important; } .desktop-only { display: none !important; } .nav-burger { display: inline-flex !important; } }
-        @media (min-width: 881px) { .nav-mobile { display: none !important; } }
-        @media (max-width: 360px) { .logo-dept { display: none !important; } }
+        .nav-burger { align-items: center; justify-content: center; }
       ` }} />
     </header>
   );

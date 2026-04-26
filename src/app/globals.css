@@ -80,3 +80,32 @@ body.lang-switching .lang-swap {
   0%   { transform: scale(1)    translateX(0)    translateY(0); }
   100% { transform: scale(1.08) translateX(-2%)  translateY(-1%); }
 }
+
+/* ────── Mobile base ────── */
+.nav-burger { display: none; }
+.nav-mobile { display: block; }
+
+@media (min-width: 881px) {
+  .nav-mobile { display: none !important; }
+}
+@media (max-width: 880px) {
+  .nav-links    { display: none !important; }
+  .desktop-only { display: none !important; }
+  .nav-burger   { display: inline-flex !important; }
+  .nav-inner    { padding-left: 20px !important; padding-right: 20px !important; }
+}
+@media (max-width: 360px) {
+  .logo-dept { display: none !important; }
+}
+
+/* Hero – always left-aligned, full width on single-column */
+.hero-left { text-align: left; }
+@media (max-width: 960px) {
+  .hero-left { width: 100%; max-width: 100%; }
+}
+
+/* Section/Footer – reduce side padding on small phones */
+@media (max-width: 640px) {
+  .site-section { padding-left: 20px !important; padding-right: 20px !important; }
+  .footer-wrap  { padding-left: 20px !important; padding-right: 20px !important; }
+}

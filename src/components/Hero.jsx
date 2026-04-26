@@ -41,7 +41,7 @@ export default function Hero({ lang, onBook }) {
       <div style={{ position: "relative", zIndex: 1, maxWidth: 1280, margin: "0 auto", padding: "80px 40px 52px", display: "grid", gridTemplateColumns: "1.05fr 1fr", gap: 56, alignItems: "center" }} className="hero-grid">
 
         {/* ── LEFT: text ── */}
-        <div>
+        <div className="hero-left">
           <Reveal>
             <Eyebrow tone="green">{T(t.eyebrow, lang)}</Eyebrow>
           </Reveal>
@@ -179,29 +179,31 @@ export default function Hero({ lang, onBook }) {
 
       <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 960px) {
-          .hero-grid { grid-template-columns: 1fr !important; gap: 24px !important; padding: 52px 28px 48px !important; }
-          .hero-art { height: 420px !important; }
+          .hero-grid  { grid-template-columns: 1fr !important; gap: 24px !important; padding: 52px 24px 48px !important; }
+          .hero-left  { width: 100% !important; max-width: 100% !important; }
+          .hero-sub   { max-width: 100% !important; }
+          .hero-art   { height: 420px !important; }
           .hero-art-thumbs { height: 56px !important; gap: 8px !important; }
-          .hero-art-frame { bottom: 66px !important; border-radius: 20px !important; }
-          .hero-float-stat { display: none !important; }
+          .hero-art-frame  { bottom: 66px !important; border-radius: 20px !important; }
+          .hero-float-stat  { display: none !important; }
           .hero-float-avail { display: none !important; }
-          .hero-slide { background-size: contain !important; background-position: center center !important; background-color: #f0f4f8 !important; }
+          .hero-slide { background-size: cover !important; background-position: center top !important; }
         }
         @media (max-width: 600px) {
-          .hero-grid { padding: 36px 18px 40px !important; gap: 20px !important; }
-          .hero-art { height: 360px !important; }
+          .hero-grid  { padding: 32px 18px 36px !important; gap: 18px !important; }
+          .hero-art   { height: 320px !important; }
           .hero-art-thumbs { height: 48px !important; gap: 6px !important; }
-          .hero-art-frame { bottom: 58px !important; border-radius: 16px !important; }
-          .hero-sub { font-size: 15px !important; margin-bottom: 18px !important; }
-          .hero-chips { gap: 6px !important; margin-bottom: 20px !important; }
-          .hero-btns { gap: 8px !important; }
-          .hero-btns > * { flex: 1 1 auto; font-size: 13px !important; padding: 11px 14px !important; gap: 6px !important; }
+          .hero-art-frame  { bottom: 58px !important; border-radius: 16px !important; }
+          .hero-sub   { font-size: 15px !important; margin-bottom: 16px !important; }
+          .hero-chips { gap: 6px !important; margin-bottom: 18px !important; }
+          .hero-btns  { gap: 8px !important; }
+          .hero-btns > * { flex: 1 1 auto; font-size: 14px !important; padding: 12px 16px !important; gap: 6px !important; }
         }
         @media (max-width: 380px) {
-          .hero-art { height: 300px !important; }
+          .hero-art   { height: 260px !important; }
           .hero-art-thumbs { display: none !important; }
-          .hero-art-frame { bottom: 0 !important; border-radius: 14px !important; }
-          .hero-btns > * { font-size: 12px !important; padding: 10px 12px !important; }
+          .hero-art-frame  { bottom: 0 !important; border-radius: 14px !important; }
+          .hero-btns > * { font-size: 13px !important; padding: 11px 14px !important; }
         }
       ` }} />
     </section>
